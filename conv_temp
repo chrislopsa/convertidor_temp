@@ -1,0 +1,55 @@
+import os
+
+def Ingresar_Car_opc_Mensaje(OPCIONES,MENSAJE):
+    while(True):
+        letter=input(MENSAJE)
+        if(letter.upper() not in OPCIONES):
+            print("invalid option")
+        else:
+            return letter.upper()
+        
+def Ingrese_Num_Mensaje(MENSAJE):
+    while(True):
+        num=input(MENSAJE)
+        if(num.isnumeric()==False):
+            print("\nRemember that the value of the variable must be numerical.");
+        else:
+            num=int(num)
+            return(num)
+        
+print("\n\t\tWelcome, Temperature Conversion\n\t");
+exit=Ingresar_Car_opc_Mensaje("SE","\n\tPlease type the letter 'S' to start the program or the letter 'E' to end.");
+os.system("cls")
+while(exit!='E'):
+    opc=Ingresar_Car_opc_Mensaje("CF","\n\tplease type 'C' to convert from °F to °C or type 'F' to convert from °C to °F");
+    os.system("cls")
+    if(opc=='C'):
+        while(True):
+            variable=Ingrese_Num_Mensaje("\n\tPlease enter the °F:\n")
+            result=((variable-32)*(5/9))
+            print("{} °F equals {} °C".format(variable,result))
+            opc=Ingresar_Car_opc_Mensaje("RME","Please type the letter 'R' to realize a new conversion,'M' to comeback at the principal menu or 'E' to end the program")
+            os.system("cls")
+            if(opc=='M'):
+                exit='S'
+                break
+            elif(opc=='E'):
+                exit='E'
+                break
+            else:
+                continue
+    elif(opc=='F'):
+        while(True):
+            variable=Ingrese_Num_Mensaje("\n\tPlease enter the °C:\n")
+            result=((variable*1.8)+32)
+            print("{} °C equals {} °F".format(variable,result))
+            opc=Ingresar_Car_opc_Mensaje("RME","Please type the letter 'R' to realize a new conversion,'M' to comeback at the principal menu or 'E' to end the program")
+            os.system("cls")
+            if(opc=='M'):
+                exit='S'
+                break
+            elif(opc=='E'):
+                exit='E'
+                break
+            else:
+                continue 
